@@ -1,5 +1,5 @@
 
-import autogen_agentchat as autogen
+from autogen import AssistantAgent, UserProxyAgent
 import os
 import json
 from dotenv import load_dotenv
@@ -20,7 +20,7 @@ def organize_groceries(items):
     """Organize grocery items by store categories using autogen agent"""
     try:
         # Create user proxy agent
-        user_proxy = autogen.UserProxyAgent(
+        user_proxy = UserProxyAgent(
             name="user_proxy",
             human_input_mode="NEVER",
             max_consecutive_auto_reply=1,
@@ -28,7 +28,7 @@ def organize_groceries(items):
         )
         
         # Create grocery categorizer agent
-        grocery_categorizer = autogen.AssistantAgent(
+        grocery_categorizer = AssistantAgent(
             name="grocery_categorizer",
             llm_config={"config_list": config_list, "temperature": 0},
             system_message="""You are an expert grocery categorization system. Your task is to:
@@ -82,7 +82,7 @@ def suggest_groceries_for_recipe(recipe):
     """Suggest groceries for a recipe using autogen agent"""
     try:
         # Create user proxy agent
-        user_proxy = autogen.UserProxyAgent(
+        user_proxy = UserProxyAgent(
             name="user_proxy",
             human_input_mode="NEVER",
             max_consecutive_auto_reply=1,
@@ -90,7 +90,7 @@ def suggest_groceries_for_recipe(recipe):
         )
         
         # Create recipe analyzer agent
-        recipe_analyzer = autogen.AssistantAgent(
+        recipe_analyzer = AssistantAgent(
             name="recipe_analyzer",
             llm_config={"config_list": config_list, "temperature": 0},
             system_message="""You are an expert recipe analyzer and grocery list generator. Your task is to:

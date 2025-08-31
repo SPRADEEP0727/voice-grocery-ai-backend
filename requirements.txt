@@ -1,6 +1,5 @@
 flask
-pyautogen
-autogen-agentchat
+autogen-agentchat==0.2.36
 openai
 python-dotenv
 flask-cors
