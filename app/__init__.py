@@ -5,8 +5,10 @@ import os
 app = Flask(__name__)
 # CORS configuration for production and development
 if os.getenv('RENDER_ENV') == 'production':
-    # Production CORS - allow broader access for testing
+    # Production CORS - allow frontend domain
     CORS(app, origins=[
+        'https://voice-grocery-ai-frondend.vercel.app',  # Your frontend domain
+        'https://voice-grocery-ai-frontend.vercel.app',  # Alternative spelling
         'https://your-frontend-domain.onrender.com',  # Update this after frontend deployment
         '*',  # Temporary: allow all origins for testing
     ])
