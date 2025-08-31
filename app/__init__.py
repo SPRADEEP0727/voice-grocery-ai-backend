@@ -3,28 +3,26 @@ from flask_cors import CORS
 import os
 
 app = Flask(__name__)
+
 # CORS configuration for production and development
-if os.getenv('RENDER_ENV') == 'production':
-    # Production CORS - allow frontend domain
-    CORS(app, origins=[
-        'https://voice-grocery-ai-frondend.vercel.app',  # Your frontend domain
-        'https://voice-grocery-ai-frontend.vercel.app',  # Alternative spelling
-        'https://your-frontend-domain.onrender.com',  # Update this after frontend deployment
-        '*',  # Temporary: allow all origins for testing
-    ])
-else:
-    # Development CORS - allow localhost
-    CORS(app, origins=[
-        'http://localhost:3000',
-        'http://localhost:5173',
-        'http://localhost:4173',
-        'http://localhost:8080',
-        'http://localhost:8081',
-        'http://127.0.0.1:3000',
-        'http://127.0.0.1:5173',
-        'http://127.0.0.1:4173',
-        'http://127.0.0.1:8080',
-        'http://127.0.0.1:8081'
-    ])
+CORS(app, 
+     origins=[
+         'https://voice-grocery-ai-frondend.vercel.app',  # Your frontend domain
+         'https://voice-grocery-ai-frontend.vercel.app',  # Alternative spelling
+         'http://localhost:3000',
+         'http://localhost:5173',
+         'http://localhost:4173',
+         'http://localhost:8080',
+         'http://localhost:8081',
+         'http://127.0.0.1:3000',
+         'http://127.0.0.1:5173',
+         'http://127.0.0.1:4173',
+         'http://127.0.0.1:8080',
+         'http://127.0.0.1:8081'
+     ],
+     methods=['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
+     allow_headers=['Content-Type', 'Authorization'],
+     supports_credentials=True
+)
 
 from app import routes
