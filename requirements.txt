@@ -1,5 +1,6 @@
 flask
 pyautogen
+autogen-agentchat
 openai
 python-dotenv
 flask-cors
