@@ -1,5 +1,5 @@
 
-import autogen
+import autogen_agentchat as autogen
 import os
 import json
 from dotenv import load_dotenv
